@@ -18,6 +18,7 @@
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx.html.shared</artifactId>
             <version>${project.version}</version>
+            <classifier>js</classifier>
 
             <exclusions>
                 <exclusion>
@@ -70,7 +71,10 @@
                     <forceCreation>true</forceCreation>
                     <classesDirectory>${project.build.outputDirectory}</classesDirectory>
                     <includes>
-                        <include>**/*.js</include>
+						<include>**/*.js</include>
+						<include>**/*.kjsm</include>
+						<include>**/*.kotlin_classes</include>
+						<include>**/*.kotlin_string_table</include>
                     </includes>
                     <archive>
                         <forced />
