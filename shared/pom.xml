@@ -43,6 +43,7 @@
                         </goals>
                         <configuration>
                             <moduleKind>umd</moduleKind>
+                            <sourceMap>true</sourceMap>
                             <outputFile>${project.build.directory}/js/${project.artifactId}.js</outputFile>
                         </configuration>
                     </execution>
