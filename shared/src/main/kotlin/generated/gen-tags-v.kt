@@ -50,6 +50,6 @@ open class VIDEO(initialAttributes : Map<String, String>, override val consumer 
 
 
 }
-fun VIDEO.source(classes : String? = null, block : SOURCE.() -> Unit = {}) : Unit = consumer.allocate<SOURCE>(SOURCE).visit(block)
+fun VIDEO.source(classes : String? = null, block : SOURCE.() -> Unit = {}) : Unit = consumer.instance("SOURCE", { SOURCE(attributesMapOf("class", classes), consumer) }).visit(block)
 
 

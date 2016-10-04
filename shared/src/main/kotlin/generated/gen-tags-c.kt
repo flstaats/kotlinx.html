@@ -54,7 +54,7 @@ open class COLGROUP(initialAttributes : Map<String, String>, override val consum
 
 
 }
-fun COLGROUP.col(classes : String? = null, block : COL.() -> Unit = {}) : Unit = consumer.allocate<COL>(COL).visit(block)
+fun COLGROUP.col(classes : String? = null, block : COL.() -> Unit = {}) : Unit = consumer.instance("COL", { COL(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")

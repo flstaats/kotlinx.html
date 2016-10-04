@@ -71,7 +71,7 @@ internal fun <O : Appendable> O.tagAttributeVar(attribute: AttributeInfo): Attri
     if (attribute.type == AttributeType.ENUM) {
         options.add(ReferenceConst(attribute.enumTypeName.decapitalize() + "Values"))
     } else if (attribute.type == AttributeType.BOOLEAN && attribute.trueFalse.isNotEmpty()) {
-        options.addAll(attribute.trueFalse.map { StringConst(it) })
+        options.addAll(attribute.trueFalse.map(::StringConst))
     }
 
     val attributeRequest = AttributeRequest(attribute.type, if (attribute.type == AttributeType.ENUM) attribute.enumTypeName else "", options)
@@ -89,7 +89,7 @@ private fun tagCandidates(tag : TagInfo) = (listOf(tag.safeName) + replacements.
 fun getTagResultClass(tag: TagInfo) =
         tagCandidates(tag)
                 .map { "HTML${it}Element" }
-                .firstOrNull { probeType(it) } ?: "HTMLElement"
+                .firstOrNull(::probeType) ?: "HTMLElement"
 
 fun contentArgumentValue(tag : TagInfo, blockOrContent : Boolean) = when {
     tag.name.toLowerCase() in emptyTags -> "block"
@@ -141,8 +141,18 @@ fun <O : Appendable> O.htmlTagBuilderMethod(receiver : String, tag : TagInfo, bl
     function(tag.safeName, arguments, "Unit", receiver = receiver)
     defineIs(buildString {
         receiverDot("consumer")
-        functionCall("allocate<${tag.nameUpper}>", listOf(
-                tag.nameUpper
+        functionCall("instance", listOf(
+                tag.nameUpper.quote(),
+                buildString {
+                    append("{ ")
+
+                    functionCall(tag.nameUpper, listOf(
+                            buildSuggestedAttributesArgument(tag),
+                            "consumer"
+                    ))
+
+                    append(" }")
+                }
         ))
 
 //        functionCall(tag.nameUpper, listOf(
@@ -184,7 +194,7 @@ private fun buildSuggestedAttributesArgument(tag: TagInfo, predefinedValues : Ma
         val name = attribute.fieldName
 
         val encoded = if (name in predefinedValues) predefinedValues[name] else when (attribute.type) {
-            AttributeType.STRING -> "$name"
+            AttributeType.STRING -> name
             AttributeType.BOOLEAN -> "$name?.booleanEncode()"
             AttributeType.ENUM -> "$name?.enumEncode()"
             AttributeType.TICKER -> "$name?.tickerEncode(${attribute.name.quote()})"

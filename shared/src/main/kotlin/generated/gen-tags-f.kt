@@ -25,7 +25,7 @@ open class FIELDSET(initialAttributes : Map<String, String>, override val consum
 
 
 }
-fun FIELDSET.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = consumer.allocate<LEGEND>(LEGEND).visit(block)
+fun FIELDSET.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = consumer.instance("LEGEND", { LEGEND(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -37,9 +37,9 @@ open class FIGCAPTION(initialAttributes : Map<String, String>, override val cons
 open class FIGURE(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("figure", consumer, initialAttributes, null, false, false), HtmlBlockTag {
 
 }
-fun FIGURE.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = consumer.allocate<LEGEND>(LEGEND).visit(block)
+fun FIGURE.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = consumer.instance("LEGEND", { LEGEND(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun FIGURE.figcaption(classes : String? = null, block : FIGCAPTION.() -> Unit = {}) : Unit = consumer.allocate<FIGCAPTION>(FIGCAPTION).visit(block)
+fun FIGURE.figcaption(classes : String? = null, block : FIGCAPTION.() -> Unit = {}) : Unit = consumer.instance("FIGCAPTION", { FIGCAPTION(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")

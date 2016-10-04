@@ -17,24 +17,24 @@ open class TABLE(initialAttributes : Map<String, String>, override val consumer 
 
 
 }
-fun TABLE.caption(classes : String? = null, block : CAPTION.() -> Unit = {}) : Unit = consumer.allocate<CAPTION>(CAPTION).visit(block)
+fun TABLE.caption(classes : String? = null, block : CAPTION.() -> Unit = {}) : Unit = consumer.instance("CAPTION", { CAPTION(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun TABLE.colGroup(classes : String? = null, block : COLGROUP.() -> Unit = {}) : Unit = consumer.allocate<COLGROUP>(COLGROUP).visit(block)
+fun TABLE.colGroup(classes : String? = null, block : COLGROUP.() -> Unit = {}) : Unit = consumer.instance("COLGROUP", { COLGROUP(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun TABLE.thead(classes : String? = null, block : THEAD.() -> Unit = {}) : Unit = consumer.allocate<THEAD>(THEAD).visit(block)
+fun TABLE.thead(classes : String? = null, block : THEAD.() -> Unit = {}) : Unit = consumer.instance("THEAD", { THEAD(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun TABLE.tfoot(classes : String? = null, block : TFOOT.() -> Unit = {}) : Unit = consumer.allocate<TFOOT>(TFOOT).visit(block)
+fun TABLE.tfoot(classes : String? = null, block : TFOOT.() -> Unit = {}) : Unit = consumer.instance("TFOOT", { TFOOT(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun TABLE.tbody(classes : String? = null, block : TBODY.() -> Unit = {}) : Unit = consumer.allocate<TBODY>(TBODY).visit(block)
+fun TABLE.tbody(classes : String? = null, block : TBODY.() -> Unit = {}) : Unit = consumer.instance("TBODY", { TBODY(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun TABLE.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.allocate<TR>(TR).visit(block)
+fun TABLE.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.instance("TR", { TR(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
 open class TBODY(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tbody", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun TBODY.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.allocate<TR>(TR).visit(block)
+fun TBODY.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.instance("TR", { TR(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -107,7 +107,7 @@ open class TEXTAREA(initialAttributes : Map<String, String>, override val consum
 open class TFOOT(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tfoot", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun TFOOT.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.allocate<TR>(TR).visit(block)
+fun TFOOT.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.instance("TR", { TR(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -135,7 +135,7 @@ open class TH(initialAttributes : Map<String, String>, override val consumer : T
 open class THEAD(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("thead", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun THEAD.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.allocate<TR>(TR).visit(block)
+fun THEAD.tr(classes : String? = null, block : TR.() -> Unit = {}) : Unit = consumer.instance("TR", { TR(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -156,12 +156,12 @@ open class TITLE(initialAttributes : Map<String, String>, override val consumer 
 open class TR(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("tr", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun TR.th(scope : ThScope? = null, classes : String? = null, block : TH.() -> Unit = {}) : Unit = consumer.allocate<TH>(TH).visit(block)
+fun TR.th(scope : ThScope? = null, classes : String? = null, block : TH.() -> Unit = {}) : Unit = consumer.instance("TH", { TH(attributesMapOf("scope", scope?.enumEncode(),"class", classes), consumer) }).visit(block)
 fun TR.colTh(classes : String? = null, block : TH.() -> Unit = {}) : Unit = TH(attributesMapOf("scope", ThScope.col.realValue,"class", classes), consumer).visit(block)
 fun TR.colGroupTh(classes : String? = null, block : TH.() -> Unit = {}) : Unit = TH(attributesMapOf("scope", ThScope.colGroup.realValue,"class", classes), consumer).visit(block)
 fun TR.rowTh(classes : String? = null, block : TH.() -> Unit = {}) : Unit = TH(attributesMapOf("scope", ThScope.row.realValue,"class", classes), consumer).visit(block)
 fun TR.rowGroupTh(classes : String? = null, block : TH.() -> Unit = {}) : Unit = TH(attributesMapOf("scope", ThScope.rowGroup.realValue,"class", classes), consumer).visit(block)
 
-fun TR.td(classes : String? = null, block : TD.() -> Unit = {}) : Unit = consumer.allocate<TD>(TD).visit(block)
+fun TR.td(classes : String? = null, block : TD.() -> Unit = {}) : Unit = consumer.instance("TD", { TD(attributesMapOf("class", classes), consumer) }).visit(block)
 
 

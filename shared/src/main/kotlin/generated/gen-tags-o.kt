@@ -45,7 +45,7 @@ open class OBJECT_(initialAttributes : Map<String, String>, override val consume
 
 
 }
-fun OBJECT_.param(name : String? = null, value : String? = null, block : PARAM.() -> Unit = {}) : Unit = consumer.allocate<PARAM>(PARAM).visit(block)
+fun OBJECT_.param(name : String? = null, value : String? = null, block : PARAM.() -> Unit = {}) : Unit = consumer.instance("PARAM", { PARAM(attributesMapOf("name", name,"value", value), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -60,7 +60,7 @@ open class OL(initialAttributes : Map<String, String>, override val consumer : T
 
 
 }
-fun OL.li(classes : String? = null, block : LI.() -> Unit = {}) : Unit = consumer.allocate<LI>(LI).visit(block)
+fun OL.li(classes : String? = null, block : LI.() -> Unit = {}) : Unit = consumer.instance("LI", { LI(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -75,8 +75,8 @@ open class OPTGROUP(initialAttributes : Map<String, String>, override val consum
 
 
 }
-fun OPTGROUP.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = consumer.allocate<OPTION>(OPTION).visit(block)
-fun OPTGROUP.option(classes : String? = null, content : String = "") : Unit = consumer.allocate<OPTION>(OPTION).visit({+content})
+fun OPTGROUP.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = consumer.instance("OPTION", { OPTION(attributesMapOf("class", classes), consumer) }).visit(block)
+fun OPTGROUP.option(classes : String? = null, content : String = "") : Unit = consumer.instance("OPTION", { OPTION(attributesMapOf("class", classes), consumer) }).visit({+content})
 
 
 @Suppress("unused")

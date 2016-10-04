@@ -53,17 +53,17 @@ open class HEADER(initialAttributes : Map<String, String>, override val consumer
 open class HGROUP(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("hgroup", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun HGROUP.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = consumer.allocate<H1>(H1).visit(block)
+fun HGROUP.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = consumer.instance("H1", { H1(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HGROUP.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = consumer.allocate<H2>(H2).visit(block)
+fun HGROUP.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = consumer.instance("H2", { H2(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HGROUP.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = consumer.allocate<H3>(H3).visit(block)
+fun HGROUP.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = consumer.instance("H3", { H3(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HGROUP.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = consumer.allocate<H4>(H4).visit(block)
+fun HGROUP.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = consumer.instance("H4", { H4(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HGROUP.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = consumer.allocate<H5>(H5).visit(block)
+fun HGROUP.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = consumer.instance("H5", { H5(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HGROUP.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = consumer.allocate<H6>(H6).visit(block)
+fun HGROUP.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = consumer.instance("H6", { H6(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
 @Suppress("unused")
@@ -79,8 +79,8 @@ open class HTML(initialAttributes : Map<String, String>, override val consumer :
 
 
 }
-fun HTML.body(classes : String? = null, block : BODY.() -> Unit = {}) : Unit = consumer.allocate<BODY>(BODY).visit(block)
+fun HTML.body(classes : String? = null, block : BODY.() -> Unit = {}) : Unit = consumer.instance("BODY", { BODY(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun HTML.head(block : HEAD.() -> Unit = {}) : Unit = consumer.allocate<HEAD>(HEAD).visit(block)
+fun HTML.head(block : HEAD.() -> Unit = {}) : Unit = consumer.instance("HEAD", { HEAD(emptyMap, consumer) }).visit(block)
 
 

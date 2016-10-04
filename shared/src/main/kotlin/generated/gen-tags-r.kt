@@ -23,8 +23,8 @@ open class RT(initialAttributes : Map<String, String>, override val consumer : T
 open class RUBY(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("ruby", consumer, initialAttributes, null, true, false), HtmlInlineTag {
 
 }
-fun RUBY.rt(classes : String? = null, block : RT.() -> Unit = {}) : Unit = consumer.allocate<RT>(RT).visit(block)
+fun RUBY.rt(classes : String? = null, block : RT.() -> Unit = {}) : Unit = consumer.instance("RT", { RT(attributesMapOf("class", classes), consumer) }).visit(block)
 
-fun RUBY.rp(classes : String? = null, block : RP.() -> Unit = {}) : Unit = consumer.allocate<RP>(RP).visit(block)
+fun RUBY.rp(classes : String? = null, block : RP.() -> Unit = {}) : Unit = consumer.instance("RP", { RP(attributesMapOf("class", classes), consumer) }).visit(block)
 
 
