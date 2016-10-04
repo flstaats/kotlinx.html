@@ -25,6 +25,8 @@ interface CustomCapture : InjectCapture {
 
 class InjectorConsumer<out T: Any>(val downstream : TagConsumer<HTMLElement>, val bean : T, rules : List<Pair<InjectCapture, KMutableProperty1<T, out HTMLElement>>>) : TagConsumer<HTMLElement> by downstream {
 
+    override fun <T : Tag> instance(tag: String, provider: () -> T) = downstream.instance(tag, provider)
+
     private val classesMap = rules
             .filter { it.first is InjectByClassName }
             .map { it.first as InjectByClassName to it.second }

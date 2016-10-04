@@ -4,7 +4,7 @@ import kotlinx.html.*
 import kotlinx.html.consumers.*
 import org.w3c.dom.events.*
 
-class HTMLStreamBuilder<O : Appendable>(val out : O, val prettyPrint : Boolean) : TagConsumer<O> {
+class HTMLStreamBuilder<out O : Appendable>(val out : O, val prettyPrint : Boolean) : TagConsumer<O>, TagProvider by CachingTagProvider() {
     private var level = 0
     private var ln = true
 

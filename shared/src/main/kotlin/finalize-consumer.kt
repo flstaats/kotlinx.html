@@ -6,8 +6,10 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.Unsafe
 import org.w3c.dom.events.Event
 
-class FinalizeConsumer<F, T>(val downstream : TagConsumer<F>, val block : (F, Boolean) -> T) : TagConsumer<T> {
+class FinalizeConsumer<F, out T>(val downstream : TagConsumer<F>, val block : (F, Boolean) -> T) : TagConsumer<T> {
     private var level = 0
+
+    override fun <T : Tag> instance(tag: String, provider: () -> T) = downstream.instance(tag, provider)
 
     override fun onTagStart(tag: Tag) {
         downstream.onTagStart(tag)
@@ -28,5 +30,5 @@ class FinalizeConsumer<F, T>(val downstream : TagConsumer<F>, val block : (F, Bo
     override fun finalize() = block(downstream.finalize(), level > 0)
 }
 
-public fun <T> TagConsumer<T>.onFinalize(block : (from : T, partial : Boolean) -> Unit) : TagConsumer<T> = FinalizeConsumer(this) { to, partial -> block(to, partial); to }
-public fun <F, T> TagConsumer<F>.onFinalizeMap(block : (from : F, partial : Boolean) -> T) : TagConsumer<T> = FinalizeConsumer(this, block)
+fun <T> TagConsumer<T>.onFinalize(block : (from : T, partial : Boolean) -> Unit) : TagConsumer<T> = FinalizeConsumer(this) { to, partial -> block(to, partial); to }
+fun <F, T> TagConsumer<F>.onFinalizeMap(block : (from : F, partial : Boolean) -> T) : TagConsumer<T> = FinalizeConsumer(this, block)

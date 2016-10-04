@@ -5,9 +5,11 @@ import kotlinx.html.TagConsumer
 import java.util.ArrayList
 import java.util.Date
 
-class TraceConsumer<R>(val downstream : TagConsumer<R>) : TagConsumer<R> by downstream {
+class TraceConsumer<out R>(val downstream : TagConsumer<R>) : TagConsumer<R> by downstream {
     private val id = "ID-${Date().getTime() % 16384}"
     private val path = ArrayList<String>(1024)
+
+    override fun <T : Tag> instance(tag: String, provider: () -> T) = downstream.instance(tag, provider)
 
     override fun onTagStart(tag: Tag) {
         downstream.onTagStart(tag)
@@ -44,4 +46,4 @@ class TraceConsumer<R>(val downstream : TagConsumer<R>) : TagConsumer<R> by down
     }
 }
 
-public fun <R> TagConsumer<R>.trace() : TagConsumer<R> = TraceConsumer(this)
+fun <R> TagConsumer<R>.trace() : TagConsumer<R> = TraceConsumer(this)

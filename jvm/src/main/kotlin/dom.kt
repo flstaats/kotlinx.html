@@ -11,7 +11,7 @@ import javax.xml.transform.*
 import javax.xml.transform.dom.*
 import javax.xml.transform.stream.*
 
-class HTMLDOMBuilder(val document : Document) : TagConsumer<Element> {
+class HTMLDOMBuilder(val document : Document) : TagConsumer<Element>, TagProvider by CachingTagProvider() {
     private val path = arrayListOf<Element>()
     private var lastLeaved : Element? = null
 

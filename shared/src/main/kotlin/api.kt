@@ -3,9 +3,11 @@ package kotlinx.html
 import org.w3c.dom.events.*
 import java.util.*
 
-interface TagConsumer<out R> {
-    fun <T : Tag> instance(tag: String, provider: (TagConsumer<*>) -> T): T = provider(this)
+interface TagProvider {
+    fun <T : Tag> instance(tag: String, provider: () -> T): T = provider()
+}
 
+interface TagConsumer<out R> : TagProvider {
     fun onTagStart(tag: Tag)
     fun onTagAttributeChange(tag: Tag, attribute: String, value: String?)
     fun onTagEvent(tag: Tag, event: String, value: (Event) -> Unit)

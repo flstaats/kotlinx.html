@@ -6,8 +6,10 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.Unsafe
 import org.w3c.dom.events.Event
 
-class DelayedConsumer<T>(val downstream : TagConsumer<T>) : TagConsumer<T> {
+class DelayedConsumer<out T>(val downstream : TagConsumer<T>) : TagConsumer<T> {
     private var delayed : Tag? = null
+
+    override fun <T : Tag> instance(tag: String, provider: () -> T) = downstream.instance(tag, provider)
 
     override fun onTagStart(tag: Tag) {
         processDelayedTag()

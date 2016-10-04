@@ -14,7 +14,7 @@ import kotlin.js.nativeSetter
 @nativeSetter
 private fun HTMLElement.setEvent(name : String, callback : (Event) -> Unit) : Unit
 
-class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R> {
+class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R>, TagProvider by CachingTagProvider() {
     private val path = arrayListOf<HTMLElement>()
     private var lastLeaved : HTMLElement? = null
 
@@ -103,18 +103,18 @@ class JSDOMBuilder<out R : HTMLElement>(val document : Document) : TagConsumer<R
 }
 
 
-public fun Document.createTree() : TagConsumer<HTMLElement> = JSDOMBuilder(this)
-public val Document.create : TagConsumer<HTMLElement>
+fun Document.createTree() : TagConsumer<HTMLElement> = JSDOMBuilder(this)
+val Document.create : TagConsumer<HTMLElement>
     get() = JSDOMBuilder(this)
 
-public fun Node.append(block : TagConsumer<HTMLElement>.() -> Unit) : List<HTMLElement> =
+fun Node.append(block : TagConsumer<HTMLElement>.() -> Unit) : List<HTMLElement> =
         ArrayList<HTMLElement>().let { result ->
             ownerDocumentExt.createTree().onFinalize { it, partial -> if (!partial) {result.add(it); appendChild(it) } }.block()
 
             result
         }
 
-public val HTMLElement.append : TagConsumer<HTMLElement>
+val HTMLElement.append : TagConsumer<HTMLElement>
     get() = ownerDocumentExt.createTree().onFinalize { element, partial -> if (!partial) { this@append.appendChild(element) } }
 
 private val Node.ownerDocumentExt: Document
