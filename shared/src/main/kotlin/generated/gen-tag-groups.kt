@@ -27,106 +27,106 @@ interface PhrasingContent : Tag {
 interface SectioningContent : Tag {
 }
 
-fun FlowContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = A(attributesMapOf("href", href,"target", target,"class", classes), consumer).visit(block)
+fun FlowContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = consumer.allocate<A>(A).visit(block)
 
-fun FlowContent.abbr(classes : String? = null, block : ABBR.() -> Unit = {}) : Unit = ABBR(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.abbr(classes : String? = null, block : ABBR.() -> Unit = {}) : Unit = consumer.allocate<ABBR>(ABBR).visit(block)
 
-fun FlowContent.area(shape : AreaShape? = null, alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", shape?.enumEncode(),"alt", alt,"class", classes), consumer).visit(block)
+fun FlowContent.area(shape : AreaShape? = null, alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = consumer.allocate<AREA>(AREA).visit(block)
 fun FlowContent.rectArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.rect.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun FlowContent.circleArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.circle.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun FlowContent.polyArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.poly.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun FlowContent.defaultArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.default.realValue,"alt", alt,"class", classes), consumer).visit(block)
 
-fun FlowContent.address(classes : String? = null, block : ADDRESS.() -> Unit = {}) : Unit = ADDRESS(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.address(classes : String? = null, block : ADDRESS.() -> Unit = {}) : Unit = consumer.allocate<ADDRESS>(ADDRESS).visit(block)
 
-fun FlowContent.article(classes : String? = null, block : ARTICLE.() -> Unit = {}) : Unit = ARTICLE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.article(classes : String? = null, block : ARTICLE.() -> Unit = {}) : Unit = consumer.allocate<ARTICLE>(ARTICLE).visit(block)
 
-fun FlowContent.aside(classes : String? = null, block : ASIDE.() -> Unit = {}) : Unit = ASIDE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.aside(classes : String? = null, block : ASIDE.() -> Unit = {}) : Unit = consumer.allocate<ASIDE>(ASIDE).visit(block)
 
-fun FlowContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = AUDIO(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = consumer.allocate<AUDIO>(AUDIO).visit(block)
 
-fun FlowContent.b(classes : String? = null, block : B.() -> Unit = {}) : Unit = B(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.b(classes : String? = null, block : B.() -> Unit = {}) : Unit = consumer.allocate<B>(B).visit(block)
 
-fun FlowContent.bdi(classes : String? = null, block : BDI.() -> Unit = {}) : Unit = BDI(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.bdi(classes : String? = null, block : BDI.() -> Unit = {}) : Unit = consumer.allocate<BDI>(BDI).visit(block)
 
-fun FlowContent.blockQuote(classes : String? = null, block : BLOCKQUOTE.() -> Unit = {}) : Unit = BLOCKQUOTE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.blockQuote(classes : String? = null, block : BLOCKQUOTE.() -> Unit = {}) : Unit = consumer.allocate<BLOCKQUOTE>(BLOCKQUOTE).visit(block)
 
-fun FlowContent.bdo(classes : String? = null, block : BDO.() -> Unit = {}) : Unit = BDO(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.bdo(classes : String? = null, block : BDO.() -> Unit = {}) : Unit = consumer.allocate<BDO>(BDO).visit(block)
 
-fun FlowContent.br(classes : String? = null, block : BR.() -> Unit = {}) : Unit = BR(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.br(classes : String? = null, block : BR.() -> Unit = {}) : Unit = consumer.allocate<BR>(BR).visit(block)
 
-fun FlowContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun FlowContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = consumer.allocate<BUTTON>(BUTTON).visit(block)
 fun FlowContent.getButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.get.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun FlowContent.postButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.post.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun FlowContent.putButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.put.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun FlowContent.deleteButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.delete.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 
-fun FlowContent.canvas(classes : String? = null, block : CANVAS.() -> Unit = {}) : Unit = CANVAS(attributesMapOf("class", classes), consumer).visit(block)
-fun FlowContent.canvas(classes : String? = null, content : String = "") : Unit = CANVAS(attributesMapOf("class", classes), consumer).visit({+content})
+fun FlowContent.canvas(classes : String? = null, block : CANVAS.() -> Unit = {}) : Unit = consumer.allocate<CANVAS>(CANVAS).visit(block)
+fun FlowContent.canvas(classes : String? = null, content : String = "") : Unit = consumer.allocate<CANVAS>(CANVAS).visit({+content})
 
-fun FlowContent.cite(classes : String? = null, block : CITE.() -> Unit = {}) : Unit = CITE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.cite(classes : String? = null, block : CITE.() -> Unit = {}) : Unit = consumer.allocate<CITE>(CITE).visit(block)
 
-fun FlowContent.code(classes : String? = null, block : CODE.() -> Unit = {}) : Unit = CODE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.code(classes : String? = null, block : CODE.() -> Unit = {}) : Unit = consumer.allocate<CODE>(CODE).visit(block)
 
-fun FlowContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun FlowContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = consumer.allocate<COMMAND>(COMMAND).visit(block)
 fun FlowContent.commandCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.command.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.checkBoxCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.checkBox.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.radioCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.radio.realValue,"class", classes), consumer).visit(block)
 
-fun FlowContent.dataList(classes : String? = null, block : DATALIST.() -> Unit = {}) : Unit = DATALIST(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.dataList(classes : String? = null, block : DATALIST.() -> Unit = {}) : Unit = consumer.allocate<DATALIST>(DATALIST).visit(block)
 
-fun FlowContent.del(classes : String? = null, block : DEL.() -> Unit = {}) : Unit = DEL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.del(classes : String? = null, block : DEL.() -> Unit = {}) : Unit = consumer.allocate<DEL>(DEL).visit(block)
 
-fun FlowContent.details(classes : String? = null, block : DETAILS.() -> Unit = {}) : Unit = DETAILS(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.details(classes : String? = null, block : DETAILS.() -> Unit = {}) : Unit = consumer.allocate<DETAILS>(DETAILS).visit(block)
 
-fun FlowContent.dfn(classes : String? = null, block : DFN.() -> Unit = {}) : Unit = DFN(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.dfn(classes : String? = null, block : DFN.() -> Unit = {}) : Unit = consumer.allocate<DFN>(DFN).visit(block)
 
-fun FlowContent.dialog(classes : String? = null, block : DIALOG.() -> Unit = {}) : Unit = DIALOG(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.dialog(classes : String? = null, block : DIALOG.() -> Unit = {}) : Unit = consumer.allocate<DIALOG>(DIALOG).visit(block)
 
-fun FlowContent.div(classes : String? = null, block : DIV.() -> Unit = {}) : Unit = DIV(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.div(classes : String? = null, block : DIV.() -> Unit = {}) : Unit = consumer.allocate<DIV>(DIV).visit(block)
 
-fun FlowContent.dl(classes : String? = null, block : DL.() -> Unit = {}) : Unit = DL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.dl(classes : String? = null, block : DL.() -> Unit = {}) : Unit = consumer.allocate<DL>(DL).visit(block)
 
-fun FlowContent.em(classes : String? = null, block : EM.() -> Unit = {}) : Unit = EM(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.em(classes : String? = null, block : EM.() -> Unit = {}) : Unit = consumer.allocate<EM>(EM).visit(block)
 
-fun FlowContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = EMBED(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = consumer.allocate<EMBED>(EMBED).visit(block)
 
-fun FlowContent.fieldSet(classes : String? = null, block : FIELDSET.() -> Unit = {}) : Unit = FIELDSET(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.fieldSet(classes : String? = null, block : FIELDSET.() -> Unit = {}) : Unit = consumer.allocate<FIELDSET>(FIELDSET).visit(block)
 
-fun FlowContent.figure(classes : String? = null, block : FIGURE.() -> Unit = {}) : Unit = FIGURE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.figure(classes : String? = null, block : FIGURE.() -> Unit = {}) : Unit = consumer.allocate<FIGURE>(FIGURE).visit(block)
 
-fun FlowContent.figcaption(classes : String? = null, block : FIGCAPTION.() -> Unit = {}) : Unit = FIGCAPTION(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.figcaption(classes : String? = null, block : FIGCAPTION.() -> Unit = {}) : Unit = consumer.allocate<FIGCAPTION>(FIGCAPTION).visit(block)
 
-fun FlowContent.footer(classes : String? = null, block : FOOTER.() -> Unit = {}) : Unit = FOOTER(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.footer(classes : String? = null, block : FOOTER.() -> Unit = {}) : Unit = consumer.allocate<FOOTER>(FOOTER).visit(block)
 
-fun FlowContent.form(action : String? = null, encType : FormEncType? = null, method : FormMethod? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = FORM(attributesMapOf("action", action,"enctype", encType?.enumEncode(),"method", method?.enumEncode(),"class", classes), consumer).visit(block)
+fun FlowContent.form(action : String? = null, encType : FormEncType? = null, method : FormMethod? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = consumer.allocate<FORM>(FORM).visit(block)
 fun FlowContent.getForm(action : String? = null, encType : FormEncType? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = FORM(attributesMapOf("action", action,"enctype", encType?.enumEncode(),"method", FormMethod.get.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.postForm(action : String? = null, encType : FormEncType? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = FORM(attributesMapOf("action", action,"enctype", encType?.enumEncode(),"method", FormMethod.post.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.putForm(action : String? = null, encType : FormEncType? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = FORM(attributesMapOf("action", action,"enctype", encType?.enumEncode(),"method", FormMethod.put.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.deleteForm(action : String? = null, encType : FormEncType? = null, classes : String? = null, block : FORM.() -> Unit = {}) : Unit = FORM(attributesMapOf("action", action,"enctype", encType?.enumEncode(),"method", FormMethod.delete.realValue,"class", classes), consumer).visit(block)
 
-fun FlowContent.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = H1(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = consumer.allocate<H1>(H1).visit(block)
 
-fun FlowContent.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = H2(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = consumer.allocate<H2>(H2).visit(block)
 
-fun FlowContent.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = H3(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = consumer.allocate<H3>(H3).visit(block)
 
-fun FlowContent.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = H4(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = consumer.allocate<H4>(H4).visit(block)
 
-fun FlowContent.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = H5(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = consumer.allocate<H5>(H5).visit(block)
 
-fun FlowContent.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = H6(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = consumer.allocate<H6>(H6).visit(block)
 
-fun FlowContent.header(classes : String? = null, block : HEADER.() -> Unit = {}) : Unit = HEADER(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.header(classes : String? = null, block : HEADER.() -> Unit = {}) : Unit = consumer.allocate<HEADER>(HEADER).visit(block)
 
-fun FlowContent.hGroup(classes : String? = null, block : HGROUP.() -> Unit = {}) : Unit = HGROUP(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.hGroup(classes : String? = null, block : HGROUP.() -> Unit = {}) : Unit = consumer.allocate<HGROUP>(HGROUP).visit(block)
 
-fun FlowContent.hr(classes : String? = null, block : HR.() -> Unit = {}) : Unit = HR(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.hr(classes : String? = null, block : HR.() -> Unit = {}) : Unit = consumer.allocate<HR>(HR).visit(block)
 
-fun FlowContent.i(classes : String? = null, block : I.() -> Unit = {}) : Unit = I(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.i(classes : String? = null, block : I.() -> Unit = {}) : Unit = consumer.allocate<I>(I).visit(block)
 
-fun FlowContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit(block)
-fun FlowContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit({+content})
+fun FlowContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = consumer.allocate<IFRAME>(IFRAME).visit(block)
+fun FlowContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<IFRAME>(IFRAME).visit({+content})
 fun FlowContent.allowSameOriginIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowSameOrigin.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.allowFormSIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.allowScriptsIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit(block)
@@ -134,9 +134,9 @@ fun FlowContent.allowSameOriginIframe(classes : String? = null, content : String
 fun FlowContent.allowFormSIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit({+content})
 fun FlowContent.allowScriptsIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit({+content})
 
-fun FlowContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = IMG(attributesMapOf("alt", alt,"src", src,"class", classes), consumer).visit(block)
+fun FlowContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = consumer.allocate<IMG>(IMG).visit(block)
 
-fun FlowContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", type?.enumEncode(),"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
+fun FlowContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = consumer.allocate<INPUT>(INPUT).visit(block)
 fun FlowContent.buttonInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.button.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun FlowContent.checkBoxInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.checkBox.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun FlowContent.colorInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.color.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
@@ -161,50 +161,50 @@ fun FlowContent.timeInput(formEncType : InputFormEncType? = null, formMethod : I
 fun FlowContent.urlInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.url.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun FlowContent.weekInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.week.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 
-fun FlowContent.ins(classes : String? = null, block : INS.() -> Unit = {}) : Unit = INS(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.ins(classes : String? = null, block : INS.() -> Unit = {}) : Unit = consumer.allocate<INS>(INS).visit(block)
 
-fun FlowContent.kbd(classes : String? = null, block : KBD.() -> Unit = {}) : Unit = KBD(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.kbd(classes : String? = null, block : KBD.() -> Unit = {}) : Unit = consumer.allocate<KBD>(KBD).visit(block)
 
-fun FlowContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", keyType?.enumEncode(),"class", classes), consumer).visit(block)
+fun FlowContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = consumer.allocate<KEYGEN>(KEYGEN).visit(block)
 fun FlowContent.rsaKeyGen(classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", KeyGenKeyType.rsa.realValue,"class", classes), consumer).visit(block)
 
-fun FlowContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = LABEL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = consumer.allocate<LABEL>(LABEL).visit(block)
 
-fun FlowContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = LINK(attributesMapOf("href", href,"rel", rel,"type", type), consumer).visit(block)
+fun FlowContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = consumer.allocate<LINK>(LINK).visit(block)
 
-fun FlowContent.map(name : String? = null, classes : String? = null, block : MAP.() -> Unit = {}) : Unit = MAP(attributesMapOf("name", name,"class", classes), consumer).visit(block)
+fun FlowContent.map(name : String? = null, classes : String? = null, block : MAP.() -> Unit = {}) : Unit = consumer.allocate<MAP>(MAP).visit(block)
 
-fun FlowContent.mark(classes : String? = null, block : MARK.() -> Unit = {}) : Unit = MARK(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.mark(classes : String? = null, block : MARK.() -> Unit = {}) : Unit = consumer.allocate<MARK>(MARK).visit(block)
 
-fun FlowContent.math(classes : String? = null, block : MATH.() -> Unit = {}) : Unit = MATH(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.math(classes : String? = null, block : MATH.() -> Unit = {}) : Unit = consumer.allocate<MATH>(MATH).visit(block)
 
-fun FlowContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = META(attributesMapOf("name", name,"content", content), consumer).visit(block)
+fun FlowContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = consumer.allocate<META>(META).visit(block)
 
-fun FlowContent.meter(classes : String? = null, block : METER.() -> Unit = {}) : Unit = METER(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.meter(classes : String? = null, block : METER.() -> Unit = {}) : Unit = consumer.allocate<METER>(METER).visit(block)
 
-fun FlowContent.nav(classes : String? = null, block : NAV.() -> Unit = {}) : Unit = NAV(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.nav(classes : String? = null, block : NAV.() -> Unit = {}) : Unit = consumer.allocate<NAV>(NAV).visit(block)
 
-fun FlowContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = NOSCRIPT(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = consumer.allocate<NOSCRIPT>(NOSCRIPT).visit(block)
 
-fun FlowContent.ol(classes : String? = null, block : OL.() -> Unit = {}) : Unit = OL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.ol(classes : String? = null, block : OL.() -> Unit = {}) : Unit = consumer.allocate<OL>(OL).visit(block)
 
-fun FlowContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = OBJECT_(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = consumer.allocate<OBJECT_>(OBJECT_).visit(block)
 
-fun FlowContent.output(classes : String? = null, block : OUTPUT.() -> Unit = {}) : Unit = OUTPUT(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.output(classes : String? = null, block : OUTPUT.() -> Unit = {}) : Unit = consumer.allocate<OUTPUT>(OUTPUT).visit(block)
 
-fun FlowContent.p(classes : String? = null, block : P.() -> Unit = {}) : Unit = P(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.p(classes : String? = null, block : P.() -> Unit = {}) : Unit = consumer.allocate<P>(P).visit(block)
 
-fun FlowContent.pre(classes : String? = null, block : PRE.() -> Unit = {}) : Unit = PRE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.pre(classes : String? = null, block : PRE.() -> Unit = {}) : Unit = consumer.allocate<PRE>(PRE).visit(block)
 
-fun FlowContent.progress(classes : String? = null, block : PROGRESS.() -> Unit = {}) : Unit = PROGRESS(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.progress(classes : String? = null, block : PROGRESS.() -> Unit = {}) : Unit = consumer.allocate<PROGRESS>(PROGRESS).visit(block)
 
-fun FlowContent.q(classes : String? = null, block : Q.() -> Unit = {}) : Unit = Q(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.q(classes : String? = null, block : Q.() -> Unit = {}) : Unit = consumer.allocate<Q>(Q).visit(block)
 
-fun FlowContent.ruby(classes : String? = null, block : RUBY.() -> Unit = {}) : Unit = RUBY(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.ruby(classes : String? = null, block : RUBY.() -> Unit = {}) : Unit = consumer.allocate<RUBY>(RUBY).visit(block)
 
-fun FlowContent.samp(classes : String? = null, block : SAMP.() -> Unit = {}) : Unit = SAMP(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.samp(classes : String? = null, block : SAMP.() -> Unit = {}) : Unit = consumer.allocate<SAMP>(SAMP).visit(block)
 
-fun FlowContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", type?.enumEncode(),"src", src), consumer).visit(block)
+fun FlowContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = consumer.allocate<SCRIPT>(SCRIPT).visit(block)
 fun FlowContent.textEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textEcmaScript.realValue,"src", src), consumer).visit(block)
 fun FlowContent.textJavaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript.realValue,"src", src), consumer).visit(block)
 fun FlowContent.textJavaScript10Script(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript10.realValue,"src", src), consumer).visit(block)
@@ -218,73 +218,73 @@ fun FlowContent.textXJavaScriptScript(src : String? = null, block : SCRIPT.() ->
 fun FlowContent.textXEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textXEcmaScript.realValue,"src", src), consumer).visit(block)
 fun FlowContent.textVbScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textVbScript.realValue,"src", src), consumer).visit(block)
 
-fun FlowContent.section(classes : String? = null, block : SECTION.() -> Unit = {}) : Unit = SECTION(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.section(classes : String? = null, block : SECTION.() -> Unit = {}) : Unit = consumer.allocate<SECTION>(SECTION).visit(block)
 
-fun FlowContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = SELECT(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = consumer.allocate<SELECT>(SELECT).visit(block)
 
-fun FlowContent.small(classes : String? = null, block : SMALL.() -> Unit = {}) : Unit = SMALL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.small(classes : String? = null, block : SMALL.() -> Unit = {}) : Unit = consumer.allocate<SMALL>(SMALL).visit(block)
 
-fun FlowContent.span(classes : String? = null, block : SPAN.() -> Unit = {}) : Unit = SPAN(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.span(classes : String? = null, block : SPAN.() -> Unit = {}) : Unit = consumer.allocate<SPAN>(SPAN).visit(block)
 
-fun FlowContent.strong(classes : String? = null, block : STRONG.() -> Unit = {}) : Unit = STRONG(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.strong(classes : String? = null, block : STRONG.() -> Unit = {}) : Unit = consumer.allocate<STRONG>(STRONG).visit(block)
 
-fun FlowContent.style(type : String? = null, block : STYLE.() -> Unit = {}) : Unit = STYLE(attributesMapOf("type", type), consumer).visit(block)
-fun FlowContent.style(type : String? = null, content : String = "") : Unit = STYLE(attributesMapOf("type", type), consumer).visit({+content})
+fun FlowContent.style(type : String? = null, block : STYLE.() -> Unit = {}) : Unit = consumer.allocate<STYLE>(STYLE).visit(block)
+fun FlowContent.style(type : String? = null, content : String = "") : Unit = consumer.allocate<STYLE>(STYLE).visit({+content})
 
-fun FlowContent.sub(classes : String? = null, block : SUB.() -> Unit = {}) : Unit = SUB(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.sub(classes : String? = null, block : SUB.() -> Unit = {}) : Unit = consumer.allocate<SUB>(SUB).visit(block)
 
-fun FlowContent.sup(classes : String? = null, block : SUP.() -> Unit = {}) : Unit = SUP(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.sup(classes : String? = null, block : SUP.() -> Unit = {}) : Unit = consumer.allocate<SUP>(SUP).visit(block)
 
-fun FlowContent.svg(classes : String? = null, block : SVG.() -> Unit = {}) : Unit = SVG(attributesMapOf("class", classes), consumer).visit(block)
-fun FlowContent.svg(classes : String? = null, content : String = "") : Unit = SVG(attributesMapOf("class", classes), consumer).visit({+content})
+fun FlowContent.svg(classes : String? = null, block : SVG.() -> Unit = {}) : Unit = consumer.allocate<SVG>(SVG).visit(block)
+fun FlowContent.svg(classes : String? = null, content : String = "") : Unit = consumer.allocate<SVG>(SVG).visit({+content})
 
-fun FlowContent.table(classes : String? = null, block : TABLE.() -> Unit = {}) : Unit = TABLE(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.table(classes : String? = null, block : TABLE.() -> Unit = {}) : Unit = consumer.allocate<TABLE>(TABLE).visit(block)
 
-fun FlowContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit(block)
-fun FlowContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit({+content})
+fun FlowContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit(block)
+fun FlowContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit({+content})
 fun FlowContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit(block)
 fun FlowContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit({+content})
 fun FlowContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit({+content})
 
-fun FlowContent.time(classes : String? = null, block : TIME.() -> Unit = {}) : Unit = TIME(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.time(classes : String? = null, block : TIME.() -> Unit = {}) : Unit = consumer.allocate<TIME>(TIME).visit(block)
 
-fun FlowContent.ul(classes : String? = null, block : UL.() -> Unit = {}) : Unit = UL(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.ul(classes : String? = null, block : UL.() -> Unit = {}) : Unit = consumer.allocate<UL>(UL).visit(block)
 
-fun FlowContent.var_(classes : String? = null, block : VAR_.() -> Unit = {}) : Unit = VAR_(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.var_(classes : String? = null, block : VAR_.() -> Unit = {}) : Unit = consumer.allocate<VAR_>(VAR_).visit(block)
 
-fun FlowContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = VIDEO(attributesMapOf("class", classes), consumer).visit(block)
+fun FlowContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = consumer.allocate<VIDEO>(VIDEO).visit(block)
 
-fun HeadingContent.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = H1(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h1(classes : String? = null, block : H1.() -> Unit = {}) : Unit = consumer.allocate<H1>(H1).visit(block)
 
-fun HeadingContent.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = H2(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h2(classes : String? = null, block : H2.() -> Unit = {}) : Unit = consumer.allocate<H2>(H2).visit(block)
 
-fun HeadingContent.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = H3(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h3(classes : String? = null, block : H3.() -> Unit = {}) : Unit = consumer.allocate<H3>(H3).visit(block)
 
-fun HeadingContent.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = H4(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h4(classes : String? = null, block : H4.() -> Unit = {}) : Unit = consumer.allocate<H4>(H4).visit(block)
 
-fun HeadingContent.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = H5(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h5(classes : String? = null, block : H5.() -> Unit = {}) : Unit = consumer.allocate<H5>(H5).visit(block)
 
-fun HeadingContent.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = H6(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.h6(classes : String? = null, block : H6.() -> Unit = {}) : Unit = consumer.allocate<H6>(H6).visit(block)
 
-fun HeadingContent.hGroup(classes : String? = null, block : HGROUP.() -> Unit = {}) : Unit = HGROUP(attributesMapOf("class", classes), consumer).visit(block)
+fun HeadingContent.hGroup(classes : String? = null, block : HGROUP.() -> Unit = {}) : Unit = consumer.allocate<HGROUP>(HGROUP).visit(block)
 
-fun InteractiveContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = A(attributesMapOf("href", href,"target", target,"class", classes), consumer).visit(block)
+fun InteractiveContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = consumer.allocate<A>(A).visit(block)
 
-fun InteractiveContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = AUDIO(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = consumer.allocate<AUDIO>(AUDIO).visit(block)
 
-fun InteractiveContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun InteractiveContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = consumer.allocate<BUTTON>(BUTTON).visit(block)
 fun InteractiveContent.getButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.get.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun InteractiveContent.postButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.post.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun InteractiveContent.putButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.put.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun InteractiveContent.deleteButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.delete.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 
-fun InteractiveContent.details(classes : String? = null, block : DETAILS.() -> Unit = {}) : Unit = DETAILS(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.details(classes : String? = null, block : DETAILS.() -> Unit = {}) : Unit = consumer.allocate<DETAILS>(DETAILS).visit(block)
 
-fun InteractiveContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = EMBED(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = consumer.allocate<EMBED>(EMBED).visit(block)
 
-fun InteractiveContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit(block)
-fun InteractiveContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit({+content})
+fun InteractiveContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = consumer.allocate<IFRAME>(IFRAME).visit(block)
+fun InteractiveContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<IFRAME>(IFRAME).visit({+content})
 fun InteractiveContent.allowSameOriginIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowSameOrigin.realValue,"class", classes), consumer).visit(block)
 fun InteractiveContent.allowFormSIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit(block)
 fun InteractiveContent.allowScriptsIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit(block)
@@ -292,9 +292,9 @@ fun InteractiveContent.allowSameOriginIframe(classes : String? = null, content :
 fun InteractiveContent.allowFormSIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit({+content})
 fun InteractiveContent.allowScriptsIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit({+content})
 
-fun InteractiveContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = IMG(attributesMapOf("alt", alt,"src", src,"class", classes), consumer).visit(block)
+fun InteractiveContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = consumer.allocate<IMG>(IMG).visit(block)
 
-fun InteractiveContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", type?.enumEncode(),"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
+fun InteractiveContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = consumer.allocate<INPUT>(INPUT).visit(block)
 fun InteractiveContent.buttonInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.button.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun InteractiveContent.checkBoxInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.checkBox.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun InteractiveContent.colorInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.color.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
@@ -319,38 +319,38 @@ fun InteractiveContent.timeInput(formEncType : InputFormEncType? = null, formMet
 fun InteractiveContent.urlInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.url.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun InteractiveContent.weekInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.week.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 
-fun InteractiveContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", keyType?.enumEncode(),"class", classes), consumer).visit(block)
+fun InteractiveContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = consumer.allocate<KEYGEN>(KEYGEN).visit(block)
 fun InteractiveContent.rsaKeyGen(classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", KeyGenKeyType.rsa.realValue,"class", classes), consumer).visit(block)
 
-fun InteractiveContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = LABEL(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = consumer.allocate<LABEL>(LABEL).visit(block)
 
-fun InteractiveContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = OBJECT_(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = consumer.allocate<OBJECT_>(OBJECT_).visit(block)
 
-fun InteractiveContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = SELECT(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = consumer.allocate<SELECT>(SELECT).visit(block)
 
-fun InteractiveContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit(block)
-fun InteractiveContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit({+content})
+fun InteractiveContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit(block)
+fun InteractiveContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit({+content})
 fun InteractiveContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit(block)
 fun InteractiveContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit(block)
 fun InteractiveContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit({+content})
 fun InteractiveContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit({+content})
 
-fun InteractiveContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = VIDEO(attributesMapOf("class", classes), consumer).visit(block)
+fun InteractiveContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = consumer.allocate<VIDEO>(VIDEO).visit(block)
 
-fun MetaDataContent.base(classes : String? = null, block : BASE.() -> Unit = {}) : Unit = BASE(attributesMapOf("class", classes), consumer).visit(block)
+fun MetaDataContent.base(classes : String? = null, block : BASE.() -> Unit = {}) : Unit = consumer.allocate<BASE>(BASE).visit(block)
 
-fun MetaDataContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun MetaDataContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = consumer.allocate<COMMAND>(COMMAND).visit(block)
 fun MetaDataContent.commandCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.command.realValue,"class", classes), consumer).visit(block)
 fun MetaDataContent.checkBoxCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.checkBox.realValue,"class", classes), consumer).visit(block)
 fun MetaDataContent.radioCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.radio.realValue,"class", classes), consumer).visit(block)
 
-fun MetaDataContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = LINK(attributesMapOf("href", href,"rel", rel,"type", type), consumer).visit(block)
+fun MetaDataContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = consumer.allocate<LINK>(LINK).visit(block)
 
-fun MetaDataContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = META(attributesMapOf("name", name,"content", content), consumer).visit(block)
+fun MetaDataContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = consumer.allocate<META>(META).visit(block)
 
-fun MetaDataContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = NOSCRIPT(attributesMapOf("class", classes), consumer).visit(block)
+fun MetaDataContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = consumer.allocate<NOSCRIPT>(NOSCRIPT).visit(block)
 
-fun MetaDataContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", type?.enumEncode(),"src", src), consumer).visit(block)
+fun MetaDataContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = consumer.allocate<SCRIPT>(SCRIPT).visit(block)
 fun MetaDataContent.textEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textEcmaScript.realValue,"src", src), consumer).visit(block)
 fun MetaDataContent.textJavaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript.realValue,"src", src), consumer).visit(block)
 fun MetaDataContent.textJavaScript10Script(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript10.realValue,"src", src), consumer).visit(block)
@@ -364,64 +364,64 @@ fun MetaDataContent.textXJavaScriptScript(src : String? = null, block : SCRIPT.(
 fun MetaDataContent.textXEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textXEcmaScript.realValue,"src", src), consumer).visit(block)
 fun MetaDataContent.textVbScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textVbScript.realValue,"src", src), consumer).visit(block)
 
-fun MetaDataContent.style(type : String? = null, block : STYLE.() -> Unit = {}) : Unit = STYLE(attributesMapOf("type", type), consumer).visit(block)
-fun MetaDataContent.style(type : String? = null, content : String = "") : Unit = STYLE(attributesMapOf("type", type), consumer).visit({+content})
+fun MetaDataContent.style(type : String? = null, block : STYLE.() -> Unit = {}) : Unit = consumer.allocate<STYLE>(STYLE).visit(block)
+fun MetaDataContent.style(type : String? = null, content : String = "") : Unit = consumer.allocate<STYLE>(STYLE).visit({+content})
 
-fun MetaDataContent.title(block : TITLE.() -> Unit = {}) : Unit = TITLE(emptyMap, consumer).visit(block)
-fun MetaDataContent.title(content : String = "") : Unit = TITLE(emptyMap, consumer).visit({+content})
+fun MetaDataContent.title(block : TITLE.() -> Unit = {}) : Unit = consumer.allocate<TITLE>(TITLE).visit(block)
+fun MetaDataContent.title(content : String = "") : Unit = consumer.allocate<TITLE>(TITLE).visit({+content})
 
-fun PhrasingContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = A(attributesMapOf("href", href,"target", target,"class", classes), consumer).visit(block)
+fun PhrasingContent.a(href : String? = null, target : String? = null, classes : String? = null, block : A.() -> Unit = {}) : Unit = consumer.allocate<A>(A).visit(block)
 
-fun PhrasingContent.abbr(classes : String? = null, block : ABBR.() -> Unit = {}) : Unit = ABBR(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.abbr(classes : String? = null, block : ABBR.() -> Unit = {}) : Unit = consumer.allocate<ABBR>(ABBR).visit(block)
 
-fun PhrasingContent.area(shape : AreaShape? = null, alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", shape?.enumEncode(),"alt", alt,"class", classes), consumer).visit(block)
+fun PhrasingContent.area(shape : AreaShape? = null, alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = consumer.allocate<AREA>(AREA).visit(block)
 fun PhrasingContent.rectArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.rect.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun PhrasingContent.circleArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.circle.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun PhrasingContent.polyArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.poly.realValue,"alt", alt,"class", classes), consumer).visit(block)
 fun PhrasingContent.defaultArea(alt : String? = null, classes : String? = null, block : AREA.() -> Unit = {}) : Unit = AREA(attributesMapOf("Shape", AreaShape.default.realValue,"alt", alt,"class", classes), consumer).visit(block)
 
-fun PhrasingContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = AUDIO(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.audio(classes : String? = null, block : AUDIO.() -> Unit = {}) : Unit = consumer.allocate<AUDIO>(AUDIO).visit(block)
 
-fun PhrasingContent.b(classes : String? = null, block : B.() -> Unit = {}) : Unit = B(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.b(classes : String? = null, block : B.() -> Unit = {}) : Unit = consumer.allocate<B>(B).visit(block)
 
-fun PhrasingContent.bdi(classes : String? = null, block : BDI.() -> Unit = {}) : Unit = BDI(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.bdi(classes : String? = null, block : BDI.() -> Unit = {}) : Unit = consumer.allocate<BDI>(BDI).visit(block)
 
-fun PhrasingContent.bdo(classes : String? = null, block : BDO.() -> Unit = {}) : Unit = BDO(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.bdo(classes : String? = null, block : BDO.() -> Unit = {}) : Unit = consumer.allocate<BDO>(BDO).visit(block)
 
-fun PhrasingContent.br(classes : String? = null, block : BR.() -> Unit = {}) : Unit = BR(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.br(classes : String? = null, block : BR.() -> Unit = {}) : Unit = consumer.allocate<BR>(BR).visit(block)
 
-fun PhrasingContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun PhrasingContent.button(formEncType : ButtonFormEncType? = null, formMethod : ButtonFormMethod? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = consumer.allocate<BUTTON>(BUTTON).visit(block)
 fun PhrasingContent.getButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.get.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun PhrasingContent.postButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.post.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun PhrasingContent.putButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.put.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 fun PhrasingContent.deleteButton(formEncType : ButtonFormEncType? = null, type : ButtonType? = null, classes : String? = null, block : BUTTON.() -> Unit = {}) : Unit = BUTTON(attributesMapOf("formenctype", formEncType?.enumEncode(),"formmethod", ButtonFormMethod.delete.realValue,"type", type?.enumEncode(),"class", classes), consumer).visit(block)
 
-fun PhrasingContent.canvas(classes : String? = null, block : CANVAS.() -> Unit = {}) : Unit = CANVAS(attributesMapOf("class", classes), consumer).visit(block)
-fun PhrasingContent.canvas(classes : String? = null, content : String = "") : Unit = CANVAS(attributesMapOf("class", classes), consumer).visit({+content})
+fun PhrasingContent.canvas(classes : String? = null, block : CANVAS.() -> Unit = {}) : Unit = consumer.allocate<CANVAS>(CANVAS).visit(block)
+fun PhrasingContent.canvas(classes : String? = null, content : String = "") : Unit = consumer.allocate<CANVAS>(CANVAS).visit({+content})
 
-fun PhrasingContent.cite(classes : String? = null, block : CITE.() -> Unit = {}) : Unit = CITE(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.cite(classes : String? = null, block : CITE.() -> Unit = {}) : Unit = consumer.allocate<CITE>(CITE).visit(block)
 
-fun PhrasingContent.code(classes : String? = null, block : CODE.() -> Unit = {}) : Unit = CODE(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.code(classes : String? = null, block : CODE.() -> Unit = {}) : Unit = consumer.allocate<CODE>(CODE).visit(block)
 
-fun PhrasingContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", type?.enumEncode(),"class", classes), consumer).visit(block)
+fun PhrasingContent.command(type : CommandType? = null, classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = consumer.allocate<COMMAND>(COMMAND).visit(block)
 fun PhrasingContent.commandCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.command.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.checkBoxCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.checkBox.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.radioCommand(classes : String? = null, block : COMMAND.() -> Unit = {}) : Unit = COMMAND(attributesMapOf("type", CommandType.radio.realValue,"class", classes), consumer).visit(block)
 
-fun PhrasingContent.dataList(classes : String? = null, block : DATALIST.() -> Unit = {}) : Unit = DATALIST(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.dataList(classes : String? = null, block : DATALIST.() -> Unit = {}) : Unit = consumer.allocate<DATALIST>(DATALIST).visit(block)
 
-fun PhrasingContent.del(classes : String? = null, block : DEL.() -> Unit = {}) : Unit = DEL(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.del(classes : String? = null, block : DEL.() -> Unit = {}) : Unit = consumer.allocate<DEL>(DEL).visit(block)
 
-fun PhrasingContent.dfn(classes : String? = null, block : DFN.() -> Unit = {}) : Unit = DFN(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.dfn(classes : String? = null, block : DFN.() -> Unit = {}) : Unit = consumer.allocate<DFN>(DFN).visit(block)
 
-fun PhrasingContent.em(classes : String? = null, block : EM.() -> Unit = {}) : Unit = EM(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.em(classes : String? = null, block : EM.() -> Unit = {}) : Unit = consumer.allocate<EM>(EM).visit(block)
 
-fun PhrasingContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = EMBED(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.embed(classes : String? = null, block : EMBED.() -> Unit = {}) : Unit = consumer.allocate<EMBED>(EMBED).visit(block)
 
-fun PhrasingContent.i(classes : String? = null, block : I.() -> Unit = {}) : Unit = I(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.i(classes : String? = null, block : I.() -> Unit = {}) : Unit = consumer.allocate<I>(I).visit(block)
 
-fun PhrasingContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit(block)
-fun PhrasingContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", sandbox?.enumEncode(),"class", classes), consumer).visit({+content})
+fun PhrasingContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = consumer.allocate<IFRAME>(IFRAME).visit(block)
+fun PhrasingContent.iframe(sandbox : IframeSandbox? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<IFRAME>(IFRAME).visit({+content})
 fun PhrasingContent.allowSameOriginIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowSameOrigin.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.allowFormSIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.allowScriptsIframe(classes : String? = null, block : IFRAME.() -> Unit = {}) : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit(block)
@@ -429,9 +429,9 @@ fun PhrasingContent.allowSameOriginIframe(classes : String? = null, content : St
 fun PhrasingContent.allowFormSIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowFormS.realValue,"class", classes), consumer).visit({+content})
 fun PhrasingContent.allowScriptsIframe(classes : String? = null, content : String = "") : Unit = IFRAME(attributesMapOf("sandbox", IframeSandbox.allowScripts.realValue,"class", classes), consumer).visit({+content})
 
-fun PhrasingContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = IMG(attributesMapOf("alt", alt,"src", src,"class", classes), consumer).visit(block)
+fun PhrasingContent.img(alt : String? = null, src : String? = null, classes : String? = null, block : IMG.() -> Unit = {}) : Unit = consumer.allocate<IMG>(IMG).visit(block)
 
-fun PhrasingContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", type?.enumEncode(),"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
+fun PhrasingContent.input(type : InputType? = null, formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = consumer.allocate<INPUT>(INPUT).visit(block)
 fun PhrasingContent.buttonInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.button.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun PhrasingContent.checkBoxInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.checkBox.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun PhrasingContent.colorInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.color.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
@@ -456,42 +456,42 @@ fun PhrasingContent.timeInput(formEncType : InputFormEncType? = null, formMethod
 fun PhrasingContent.urlInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.url.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 fun PhrasingContent.weekInput(formEncType : InputFormEncType? = null, formMethod : InputFormMethod? = null, name : String? = null, classes : String? = null, block : INPUT.() -> Unit = {}) : Unit = INPUT(attributesMapOf("type", InputType.week.realValue,"formenctype", formEncType?.enumEncode(),"formmethod", formMethod?.enumEncode(),"name", name,"class", classes), consumer).visit(block)
 
-fun PhrasingContent.ins(classes : String? = null, block : INS.() -> Unit = {}) : Unit = INS(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.ins(classes : String? = null, block : INS.() -> Unit = {}) : Unit = consumer.allocate<INS>(INS).visit(block)
 
-fun PhrasingContent.kbd(classes : String? = null, block : KBD.() -> Unit = {}) : Unit = KBD(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.kbd(classes : String? = null, block : KBD.() -> Unit = {}) : Unit = consumer.allocate<KBD>(KBD).visit(block)
 
-fun PhrasingContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", keyType?.enumEncode(),"class", classes), consumer).visit(block)
+fun PhrasingContent.keyGen(keyType : KeyGenKeyType? = null, classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = consumer.allocate<KEYGEN>(KEYGEN).visit(block)
 fun PhrasingContent.rsaKeyGen(classes : String? = null, block : KEYGEN.() -> Unit = {}) : Unit = KEYGEN(attributesMapOf("keytype", KeyGenKeyType.rsa.realValue,"class", classes), consumer).visit(block)
 
-fun PhrasingContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = LABEL(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.label(classes : String? = null, block : LABEL.() -> Unit = {}) : Unit = consumer.allocate<LABEL>(LABEL).visit(block)
 
-fun PhrasingContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = LINK(attributesMapOf("href", href,"rel", rel,"type", type), consumer).visit(block)
+fun PhrasingContent.link(href : String? = null, rel : String? = null, type : String? = null, block : LINK.() -> Unit = {}) : Unit = consumer.allocate<LINK>(LINK).visit(block)
 
-fun PhrasingContent.map(name : String? = null, classes : String? = null, block : MAP.() -> Unit = {}) : Unit = MAP(attributesMapOf("name", name,"class", classes), consumer).visit(block)
+fun PhrasingContent.map(name : String? = null, classes : String? = null, block : MAP.() -> Unit = {}) : Unit = consumer.allocate<MAP>(MAP).visit(block)
 
-fun PhrasingContent.mark(classes : String? = null, block : MARK.() -> Unit = {}) : Unit = MARK(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.mark(classes : String? = null, block : MARK.() -> Unit = {}) : Unit = consumer.allocate<MARK>(MARK).visit(block)
 
-fun PhrasingContent.math(classes : String? = null, block : MATH.() -> Unit = {}) : Unit = MATH(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.math(classes : String? = null, block : MATH.() -> Unit = {}) : Unit = consumer.allocate<MATH>(MATH).visit(block)
 
-fun PhrasingContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = META(attributesMapOf("name", name,"content", content), consumer).visit(block)
+fun PhrasingContent.meta(name : String? = null, content : String? = null, block : META.() -> Unit = {}) : Unit = consumer.allocate<META>(META).visit(block)
 
-fun PhrasingContent.meter(classes : String? = null, block : METER.() -> Unit = {}) : Unit = METER(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.meter(classes : String? = null, block : METER.() -> Unit = {}) : Unit = consumer.allocate<METER>(METER).visit(block)
 
-fun PhrasingContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = NOSCRIPT(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.noScript(classes : String? = null, block : NOSCRIPT.() -> Unit = {}) : Unit = consumer.allocate<NOSCRIPT>(NOSCRIPT).visit(block)
 
-fun PhrasingContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = OBJECT_(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.object_(classes : String? = null, block : OBJECT_.() -> Unit = {}) : Unit = consumer.allocate<OBJECT_>(OBJECT_).visit(block)
 
-fun PhrasingContent.output(classes : String? = null, block : OUTPUT.() -> Unit = {}) : Unit = OUTPUT(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.output(classes : String? = null, block : OUTPUT.() -> Unit = {}) : Unit = consumer.allocate<OUTPUT>(OUTPUT).visit(block)
 
-fun PhrasingContent.progress(classes : String? = null, block : PROGRESS.() -> Unit = {}) : Unit = PROGRESS(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.progress(classes : String? = null, block : PROGRESS.() -> Unit = {}) : Unit = consumer.allocate<PROGRESS>(PROGRESS).visit(block)
 
-fun PhrasingContent.q(classes : String? = null, block : Q.() -> Unit = {}) : Unit = Q(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.q(classes : String? = null, block : Q.() -> Unit = {}) : Unit = consumer.allocate<Q>(Q).visit(block)
 
-fun PhrasingContent.ruby(classes : String? = null, block : RUBY.() -> Unit = {}) : Unit = RUBY(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.ruby(classes : String? = null, block : RUBY.() -> Unit = {}) : Unit = consumer.allocate<RUBY>(RUBY).visit(block)
 
-fun PhrasingContent.samp(classes : String? = null, block : SAMP.() -> Unit = {}) : Unit = SAMP(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.samp(classes : String? = null, block : SAMP.() -> Unit = {}) : Unit = consumer.allocate<SAMP>(SAMP).visit(block)
 
-fun PhrasingContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", type?.enumEncode(),"src", src), consumer).visit(block)
+fun PhrasingContent.script(type : ScriptType? = null, src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = consumer.allocate<SCRIPT>(SCRIPT).visit(block)
 fun PhrasingContent.textEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textEcmaScript.realValue,"src", src), consumer).visit(block)
 fun PhrasingContent.textJavaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript.realValue,"src", src), consumer).visit(block)
 fun PhrasingContent.textJavaScript10Script(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textJavaScript10.realValue,"src", src), consumer).visit(block)
@@ -505,39 +505,39 @@ fun PhrasingContent.textXJavaScriptScript(src : String? = null, block : SCRIPT.(
 fun PhrasingContent.textXEcmaScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textXEcmaScript.realValue,"src", src), consumer).visit(block)
 fun PhrasingContent.textVbScriptScript(src : String? = null, block : SCRIPT.() -> Unit = {}) : Unit = SCRIPT(attributesMapOf("type", ScriptType.textVbScript.realValue,"src", src), consumer).visit(block)
 
-fun PhrasingContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = SELECT(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.select(classes : String? = null, block : SELECT.() -> Unit = {}) : Unit = consumer.allocate<SELECT>(SELECT).visit(block)
 
-fun PhrasingContent.small(classes : String? = null, block : SMALL.() -> Unit = {}) : Unit = SMALL(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.small(classes : String? = null, block : SMALL.() -> Unit = {}) : Unit = consumer.allocate<SMALL>(SMALL).visit(block)
 
-fun PhrasingContent.span(classes : String? = null, block : SPAN.() -> Unit = {}) : Unit = SPAN(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.span(classes : String? = null, block : SPAN.() -> Unit = {}) : Unit = consumer.allocate<SPAN>(SPAN).visit(block)
 
-fun PhrasingContent.strong(classes : String? = null, block : STRONG.() -> Unit = {}) : Unit = STRONG(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.strong(classes : String? = null, block : STRONG.() -> Unit = {}) : Unit = consumer.allocate<STRONG>(STRONG).visit(block)
 
-fun PhrasingContent.sub(classes : String? = null, block : SUB.() -> Unit = {}) : Unit = SUB(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.sub(classes : String? = null, block : SUB.() -> Unit = {}) : Unit = consumer.allocate<SUB>(SUB).visit(block)
 
-fun PhrasingContent.sup(classes : String? = null, block : SUP.() -> Unit = {}) : Unit = SUP(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.sup(classes : String? = null, block : SUP.() -> Unit = {}) : Unit = consumer.allocate<SUP>(SUP).visit(block)
 
-fun PhrasingContent.svg(classes : String? = null, block : SVG.() -> Unit = {}) : Unit = SVG(attributesMapOf("class", classes), consumer).visit(block)
-fun PhrasingContent.svg(classes : String? = null, content : String = "") : Unit = SVG(attributesMapOf("class", classes), consumer).visit({+content})
+fun PhrasingContent.svg(classes : String? = null, block : SVG.() -> Unit = {}) : Unit = consumer.allocate<SVG>(SVG).visit(block)
+fun PhrasingContent.svg(classes : String? = null, content : String = "") : Unit = consumer.allocate<SVG>(SVG).visit({+content})
 
-fun PhrasingContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit(block)
-fun PhrasingContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", wrap?.enumEncode(),"class", classes), consumer).visit({+content})
+fun PhrasingContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit(block)
+fun PhrasingContent.textArea(rows : String? = null, cols : String? = null, wrap : TextAreaWrap? = null, classes : String? = null, content : String = "") : Unit = consumer.allocate<TEXTAREA>(TEXTAREA).visit({+content})
 fun PhrasingContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, block : TEXTAREA.() -> Unit = {}) : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit(block)
 fun PhrasingContent.hardTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.hard.realValue,"class", classes), consumer).visit({+content})
 fun PhrasingContent.softTextArea(rows : String? = null, cols : String? = null, classes : String? = null, content : String = "") : Unit = TEXTAREA(attributesMapOf("rows", rows,"cols", cols,"wrap", TextAreaWrap.soft.realValue,"class", classes), consumer).visit({+content})
 
-fun PhrasingContent.time(classes : String? = null, block : TIME.() -> Unit = {}) : Unit = TIME(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.time(classes : String? = null, block : TIME.() -> Unit = {}) : Unit = consumer.allocate<TIME>(TIME).visit(block)
 
-fun PhrasingContent.var_(classes : String? = null, block : VAR_.() -> Unit = {}) : Unit = VAR_(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.var_(classes : String? = null, block : VAR_.() -> Unit = {}) : Unit = consumer.allocate<VAR_>(VAR_).visit(block)
 
-fun PhrasingContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = VIDEO(attributesMapOf("class", classes), consumer).visit(block)
+fun PhrasingContent.video(classes : String? = null, block : VIDEO.() -> Unit = {}) : Unit = consumer.allocate<VIDEO>(VIDEO).visit(block)
 
-fun SectioningContent.article(classes : String? = null, block : ARTICLE.() -> Unit = {}) : Unit = ARTICLE(attributesMapOf("class", classes), consumer).visit(block)
+fun SectioningContent.article(classes : String? = null, block : ARTICLE.() -> Unit = {}) : Unit = consumer.allocate<ARTICLE>(ARTICLE).visit(block)
 
-fun SectioningContent.aside(classes : String? = null, block : ASIDE.() -> Unit = {}) : Unit = ASIDE(attributesMapOf("class", classes), consumer).visit(block)
+fun SectioningContent.aside(classes : String? = null, block : ASIDE.() -> Unit = {}) : Unit = consumer.allocate<ASIDE>(ASIDE).visit(block)
 
-fun SectioningContent.nav(classes : String? = null, block : NAV.() -> Unit = {}) : Unit = NAV(attributesMapOf("class", classes), consumer).visit(block)
+fun SectioningContent.nav(classes : String? = null, block : NAV.() -> Unit = {}) : Unit = consumer.allocate<NAV>(NAV).visit(block)
 
-fun SectioningContent.section(classes : String? = null, block : SECTION.() -> Unit = {}) : Unit = SECTION(attributesMapOf("class", classes), consumer).visit(block)
+fun SectioningContent.section(classes : String? = null, block : SECTION.() -> Unit = {}) : Unit = consumer.allocate<SECTION>(SECTION).visit(block)
 

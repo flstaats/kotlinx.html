@@ -13,8 +13,8 @@ import kotlinx.html.attributes.*
 open class DATALIST(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("datalist", consumer, initialAttributes, null, true, false), HtmlInlineTag {
 
 }
-fun DATALIST.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = OPTION(attributesMapOf("class", classes), consumer).visit(block)
-fun DATALIST.option(classes : String? = null, content : String = "") : Unit = OPTION(attributesMapOf("class", classes), consumer).visit({+content})
+fun DATALIST.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = consumer.allocate<OPTION>(OPTION).visit(block)
+fun DATALIST.option(classes : String? = null, content : String = "") : Unit = consumer.allocate<OPTION>(OPTION).visit({+content})
 
 
 @Suppress("unused")
@@ -43,7 +43,7 @@ open class DETAILS(initialAttributes : Map<String, String>, override val consume
 
 
 }
-fun DETAILS.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = LEGEND(attributesMapOf("class", classes), consumer).visit(block)
+fun DETAILS.legEnd(classes : String? = null, block : LEGEND.() -> Unit = {}) : Unit = consumer.allocate<LEGEND>(LEGEND).visit(block)
 
 
 @Suppress("unused")
@@ -65,9 +65,9 @@ open class DIV(initialAttributes : Map<String, String>, override val consumer : 
 open class DL(initialAttributes : Map<String, String>, override val consumer : TagConsumer<*>) : HTMLTag("dl", consumer, initialAttributes, null, false, false), CommonAttributeGroupFacade {
 
 }
-fun DL.dd(classes : String? = null, block : DD.() -> Unit = {}) : Unit = DD(attributesMapOf("class", classes), consumer).visit(block)
+fun DL.dd(classes : String? = null, block : DD.() -> Unit = {}) : Unit = consumer.allocate<DD>(DD).visit(block)
 
-fun DL.dt(classes : String? = null, block : DT.() -> Unit = {}) : Unit = DT(attributesMapOf("class", classes), consumer).visit(block)
+fun DL.dt(classes : String? = null, block : DT.() -> Unit = {}) : Unit = consumer.allocate<DT>(DT).visit(block)
 
 
 @Suppress("unused")

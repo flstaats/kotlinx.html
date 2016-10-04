@@ -115,6 +115,6 @@ open class AUDIO(initialAttributes : Map<String, String>, override val consumer 
 
 
 }
-fun AUDIO.source(classes : String? = null, block : SOURCE.() -> Unit = {}) : Unit = SOURCE(attributesMapOf("class", classes), consumer).visit(block)
+fun AUDIO.source(classes : String? = null, block : SOURCE.() -> Unit = {}) : Unit = consumer.allocate<SOURCE>(SOURCE).visit(block)
 
 

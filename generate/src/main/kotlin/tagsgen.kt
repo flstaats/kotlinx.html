@@ -140,10 +140,15 @@ fun <O : Appendable> O.htmlTagBuilderMethod(receiver : String, tag : TagInfo, bl
 
     function(tag.safeName, arguments, "Unit", receiver = receiver)
     defineIs(buildString {
-        functionCall(tag.nameUpper, listOf(
-                buildSuggestedAttributesArgument(tag),
-                "consumer"
+        receiverDot("consumer")
+        functionCall("allocate<${tag.nameUpper}>", listOf(
+                tag.nameUpper
         ))
+
+//        functionCall(tag.nameUpper, listOf(
+//                buildSuggestedAttributesArgument(tag),
+//                "consumer"
+//        ))
         append(".")
         functionCall("visit", listOf(contentArgumentValue(tag, blockOrContent)))
     })

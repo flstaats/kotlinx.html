@@ -76,10 +76,10 @@ open class SELECT(initialAttributes : Map<String, String>, override val consumer
 
 
 }
-fun SELECT.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = OPTION(attributesMapOf("class", classes), consumer).visit(block)
-fun SELECT.option(classes : String? = null, content : String = "") : Unit = OPTION(attributesMapOf("class", classes), consumer).visit({+content})
+fun SELECT.option(classes : String? = null, block : OPTION.() -> Unit = {}) : Unit = consumer.allocate<OPTION>(OPTION).visit(block)
+fun SELECT.option(classes : String? = null, content : String = "") : Unit = consumer.allocate<OPTION>(OPTION).visit({+content})
 
-fun SELECT.optGroup(label : String? = null, classes : String? = null, block : OPTGROUP.() -> Unit = {}) : Unit = OPTGROUP(attributesMapOf("label", label,"class", classes), consumer).visit(block)
+fun SELECT.optGroup(label : String? = null, classes : String? = null, block : OPTGROUP.() -> Unit = {}) : Unit = consumer.allocate<OPTGROUP>(OPTGROUP).visit(block)
 
 
 @Suppress("unused")

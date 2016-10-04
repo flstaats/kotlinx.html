@@ -4,6 +4,7 @@ import org.w3c.dom.events.*
 import java.util.*
 
 interface TagConsumer<out R> {
+    fun <T : Tag> allocate(tag: String): T = TODO()
     fun onTagStart(tag: Tag)
     fun onTagAttributeChange(tag: Tag, attribute: String, value: String?)
     fun onTagEvent(tag: Tag, event: String, value: (Event) -> Unit)
@@ -15,7 +16,19 @@ interface TagConsumer<out R> {
     fun finalize(): R
 }
 
-interface Tag {
+interface HasContent {
+    fun text(text: String)
+    fun entity(e: Entities)
+
+    operator fun Entities.unaryPlus() : Unit {
+        entity(this)
+    }
+    operator fun String.unaryPlus() : Unit {
+        text(this)
+    }
+}
+
+interface Tag : HasContent {
     val tagName: String
     val consumer: TagConsumer<*>
     val namespace: String?
@@ -26,17 +39,18 @@ interface Tag {
     val inlineTag: Boolean
     val emptyTag: Boolean
 
-    operator fun Entities.unaryPlus() : Unit {
-        consumer.onTagContentEntity(this)
+    override fun text(text: String) {
+        consumer.onTagContent(text)
     }
-    operator fun String.unaryPlus() : Unit {
-        consumer.onTagContent(this)
+    override fun entity(e: Entities) {
+        consumer.onTagContentEntity(e)
     }
 }
 
-interface Unsafe {
-    operator fun String.unaryPlus()
-    operator fun Entities.unaryPlus() = +text
+interface Unsafe : HasContent {
+    override fun entity(e: Entities) {
+        text(e.text)
+    }
 }
 
 interface AttributeEnum {
@@ -92,8 +106,8 @@ val emptyMap: Map<String, String> = emptyMap()
 class DefaultUnsafe : Unsafe {
     private val sb = StringBuilder()
 
-    override fun String.unaryPlus() {
-        sb.append(this)
+    override fun text(text: String) {
+        sb.append(text)
     }
 
     override fun toString(): String = sb.toString()

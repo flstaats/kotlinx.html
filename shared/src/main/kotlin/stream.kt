@@ -2,7 +2,7 @@ package kotlinx.html.stream
 
 import kotlinx.html.*
 import kotlinx.html.consumers.*
-import org.w3c.dom.events.Event
+import org.w3c.dom.events.*
 
 class HTMLStreamBuilder<O : Appendable>(val out : O, val prettyPrint : Boolean) : TagConsumer<O> {
     private var level = 0
@@ -83,8 +83,8 @@ class HTMLStreamBuilder<O : Appendable>(val out : O, val prettyPrint : Boolean) 
     }
 
     val UnsafeImpl = object : Unsafe {
-        override operator fun String.unaryPlus() {
-            out.append(this)
+        override fun text(text: String) {
+            out.append(text)
         }
     }
 
